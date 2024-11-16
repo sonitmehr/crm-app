@@ -12,9 +12,13 @@ export const getOrders = () => api.get("/orders");
 export const getCampaigns = () => api.get("/campaign");
 export const getAudiences = () => api.get("/audience");
 
-export const createCustomer = (data: any) => api.post("/customers", data);
+export const createCustomer = (data: any) =>{
+  console.log("data : ", data);
+  return api.post("/customers", data);}
 export const createOrder = (data: any) => api.post("/orders", data);
 export const createCampaign = (data: any) => api.post("/campaign", data);
-export const createAudience = (data: any) => api.post("/audience", data);
+export const createAudience = (data: any) => {
+  console.log("data : ", data);
+  return api.post("/audience", data);}
 
 export default api;

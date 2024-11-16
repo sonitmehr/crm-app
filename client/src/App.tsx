@@ -29,6 +29,7 @@ interface Audience {
   _id: string;
   name: string;
   criteria: Array<{ field: string; operator: string; value: number | string }>;
+  description : string;
 }
 
 const App: React.FC = () => {
@@ -61,6 +62,7 @@ const App: React.FC = () => {
   const [newAudience, setNewAudience] = useState<Omit<Audience, "_id">>({
     name: "",
     criteria: [],
+    description : "this is description"
   });
 
   // Fetch data on component mount
@@ -123,7 +125,7 @@ const App: React.FC = () => {
     try {
       const response = await createAudience(newAudience);
       setAudiences([...audiences, response.data]);
-      setNewAudience({ name: "", criteria: [] });
+      setNewAudience({ name: "", criteria: [] ,description : ""});
     } catch (error) {
       console.error("Error adding audience:", error);
     }
@@ -175,7 +177,7 @@ const App: React.FC = () => {
         <ul>
           {customers.map((customer) => (
             <li key={customer._id}>
-              {customer.name} - {customer.email} - {customer.totalSpending} - {customer.visits} visits
+              {customer.name} - {customer.email} - ${customer.totalSpending} - {customer.visits} visits
             </li>
           ))}
         </ul>
